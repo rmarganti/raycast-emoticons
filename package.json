@@ -1,0 +1,38 @@
+{
+    "$schema": "https://www.raycast.com/schemas/extension.json",
+    "name": "emoticons",
+    "title": "Emoticons",
+    "description": "Search and insert emoticons",
+    "icon": "command-icon.png",
+    "author": "rmarganti",
+    "categories": [
+        "Fun"
+    ],
+    "license": "MIT",
+    "commands": [
+        {
+            "name": "insert-emoticon",
+            "title": "Insert Emoticon",
+            "description": "Search an emoticon by name or type, and insert it into the focused text input",
+            "mode": "view"
+        }
+    ],
+    "dependencies": {
+        "@raycast/api": "^1.65.1"
+    },
+    "devDependencies": {
+        "@raycast/eslint-config": "^1.0.6",
+        "@types/node": "20.8.10",
+        "@types/react": "18.2.27",
+        "eslint": "^8.51.0",
+        "prettier": "^3.0.3",
+        "typescript": "^5.2.2"
+    },
+    "scripts": {
+        "build": "ray build -e dist",
+        "dev": "ray develop",
+        "fix-lint": "ray lint --fix",
+        "lint": "ray lint",
+        "publish": "npx @raycast/api@latest publish"
+    }
+}
