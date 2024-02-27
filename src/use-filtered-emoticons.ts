@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { emoticons } from "./emoticons";
+import { Emoticon, emoticons } from "./emoticons";
 
 export const useFilteredEmoticons = () => {
     const [searchText, setSearchText] = useState("");
@@ -13,10 +13,28 @@ export const useFilteredEmoticons = () => {
 
         return emoticons.filter(
             (emoticon) =>
-                emoticon.name.toLowerCase().includes(lowerCaseSearchText) ||
-                emoticon.category.toLowerCase().includes(lowerCaseSearchText),
+                titleIncludes(emoticon, lowerCaseSearchText) ||
+                categoriesInclude(emoticon, lowerCaseSearchText),
         );
     }, [searchText]);
 
     return [filteredEmoticons, setSearchText] as const;
+};
+
+const titleIncludes = (emoticon: Emoticon, searchText: string) => {
+    const title = emoticon.title;
+
+    if (title === undefined || title === null) {
+        return false;
+    }
+
+    return title.toLowerCase().includes(searchText);
+};
+
+const categoriesInclude = (emoticon: Emoticon, searchText: string) => {
+    const categories = emoticon.tags;
+
+    return categories.some((category) =>
+        category.toLowerCase().includes(searchText),
+    );
 };

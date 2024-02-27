@@ -34,13 +34,13 @@ type EmoticonListItemProps = {
 function EmoticonListItem({ emoticon }: EmoticonListItemProps) {
     return (
         <List.Item
-            key={emoticon.name}
-            title={emoticon.emoticon}
-            subtitle={emoticon.name}
-            accessories={[{ text: emoticon.category }]}
+            key={emoticon.plain}
+            title={emoticon.plain}
+            subtitle={emoticon.title || undefined}
+            accessories={[{ text: emoticon.tags.join(", ") }]}
             actions={
                 <ActionPanel>
-                    <Action.Paste content={emoticon.emoticon} />
+                    <Action.Paste content={emoticon.plain} />
                 </ActionPanel>
             }
         />
